@@ -12,6 +12,6 @@
         android:clipToPadding="false"
         android:fadingEdge="none"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"></android.support.v7.widget.RecyclerView>
+        android:paddingRight="10dp"/>
 
 </LinearLayout>
