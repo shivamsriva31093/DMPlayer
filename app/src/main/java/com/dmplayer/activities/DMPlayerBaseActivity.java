@@ -50,6 +50,7 @@ import com.dmplayer.fragments.FragmentEqualizer;
 import com.dmplayer.fragments.FragmentFeedBack;
 import com.dmplayer.fragments.FragmentFevorite;
 import com.dmplayer.fragments.FragmentLibrary;
+import com.dmplayer.fragments.FragmentMoodPredictor;
 import com.dmplayer.fragments.FragmentSettings;
 import com.dmplayer.manager.MediaController;
 import com.dmplayer.manager.MusicPreferance;
@@ -587,6 +588,13 @@ public class DMPlayerBaseActivity extends ActionBarActivity implements View.OnCl
                 fragmentTransaction.replace(R.id.fragment, fragmentfeedback);
                 fragmentTransaction.commit();
                 toolbar.setTitle("Send feedback");
+                break;
+            case 6:
+                sharedPreferences.edit().putInt("FRAGMENT", position).apply();
+                FragmentMoodPredictor moodPredictor = new FragmentMoodPredictor();
+                fragmentTransaction.replace(R.id.fragment, moodPredictor);
+                fragmentTransaction.commit();
+                toolbar.setTitle("Mood Predictor");
                 break;
         }
     }
