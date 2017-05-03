@@ -24,6 +24,7 @@ public class SongDetail {
 	public String display_name;
 	public String duration;
 	public String path;
+	public String mood;
 	public float audioProgress = 0.0f;
 	public int audioProgressSec = 0;
 
@@ -35,6 +36,27 @@ public class SongDetail {
 		this.path = _path;
 		this.display_name = _display_name;
 		this.duration = TextUtils.isEmpty(_duration) ? "0" : String.valueOf((Long.valueOf(_duration) / 1000));
+	}
+
+	public SongDetail(int id, int album_id, String artist, String title, String display_name, String duration, String path, String mood, float audioProgress, int audioProgressSec) {
+		this.id = id;
+		this.album_id = album_id;
+		this.artist = artist;
+		this.title = title;
+		this.display_name = display_name;
+		this.duration = duration;
+		this.path = path;
+		this.mood = mood;
+		this.audioProgress = audioProgress;
+		this.audioProgressSec = audioProgressSec;
+	}
+
+	public String getMood() {
+		return mood;
+	}
+
+	public void setMood(String mood) {
+		this.mood = mood;
 	}
 
 	public int getId() {
@@ -106,9 +128,7 @@ public class SongDetail {
 				FileDescriptor fd = pfd.getFileDescriptor();
 				curThumb = BitmapFactory.decodeFileDescriptor(fd);
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return curThumb;
@@ -127,9 +147,7 @@ public class SongDetail {
 				FileDescriptor fd = pfd.getFileDescriptor();
 				curThumb = BitmapFactory.decodeFileDescriptor(fd);
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return curThumb;
